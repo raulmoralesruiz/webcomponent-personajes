@@ -3,11 +3,10 @@ import leg from "../assets/leg.svg";
 import js from "../assets/js.svg";
 import css from "../assets/css.svg";
 
+const DEFAULT_CHARACTER = "html";
 const CHARACTER_TYPE = { html, css, js };
 
-const DEFAULT_CHARACTER = "html";
-
-class WebCharacter extends HTMLElement {
+export class WebCharacter extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -67,7 +66,20 @@ class WebCharacter extends HTMLElement {
     this.render();
     this.shadowRoot
       .querySelector(".body")
-      .addEventListener("click", () => this.setDance(true));
+      .addEventListener("dblclick", () => this.setDance(true));
+
+    this.shadowRoot
+      .querySelector(".body")
+      .addEventListener("click", () => this.emitInfo());
+  }
+
+  emitInfo() {
+    const event = new CustomEvent("INFO", {
+      detail: this.type,
+      composed: true,
+      bubbles: true,
+    });
+    this.dispatchEvent(event);
   }
 
   setMove(value = true) {
