@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.characters {
+  display: flex;
+}
+
+h1 {
+  color: hotpink;
+}
