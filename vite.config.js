@@ -1,6 +1,8 @@
-const path = require("path");
-const mode = process.env.NODE_ENV === "production" ? "production" : "development";
-const base = mode === "production" ? "/" + path.basename(process.cwd()) + "/" : "/";
+// const path = require("path");
+const mode =
+  process.env.NODE_ENV === "production" ? "production" : "development";
+// const base = mode === "production" ? "/" + path.basename(process.cwd()) + "/" : "/";
+const base = "/";
 
 module.exports = {
   root: "src",
@@ -9,6 +11,6 @@ module.exports = {
   publicDir: "../public",
   build: {
     outDir: "../dist",
-    assetsDir: "./"
-  }
+    assetsDir: "./",
+  },
 };
